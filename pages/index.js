@@ -13,7 +13,7 @@ export default () => (
         <h1>cui ning</h1>
         <nav>
           <a target="_blank" href="https://github.com/cuining">Github</a>
-          <Link href="https://github.com/cuining/blog/issues"><a>Essays</a></Link>
+          <Link href="/essays"><a>Essays</a></Link>
           <a href="mailto:cncc0824@gmail.com">Email</a>
         </nav>
       </div>
