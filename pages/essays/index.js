@@ -35,7 +35,7 @@ const pad = n => n < 10 ? `0${n}` : n
 const Post = ({ number, date, title }) => (
   <div className="post">
     <span className="date">{format(new Date(date))}</span>
-    <Link href={`/essays/${number}`}>
+    <Link href={`/essays/detail?id=${number}`} as={`/essays/${number}`}>
       <a>{title}</a>
     </Link>
 
