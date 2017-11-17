@@ -1,7 +1,7 @@
 import Page from '../layouts/main'
-import Link from 'next/prefetch'
-import { posts } from '../posts'
+import Link from 'next/link'
 import Head from 'next/head'
+import { posts } from '../posts'
 
 export default () => (
   <Page>
@@ -11,7 +11,7 @@ export default () => (
     <div className="posts">
       {
         posts.map(({ id, date, title }) => (
-          <Post 
+          <Post
             id={id}
             key={id}
             date={date}

@@ -1,5 +1,5 @@
 import Meta from '../components/meta'
-import Link from 'next/prefetch'
+import Link from 'next/link'
 
 export default ({ children }) => (
   <div className="main">
