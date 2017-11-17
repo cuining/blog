@@ -5,10 +5,8 @@ const pathToRegexp = require('path-to-regexp')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
-const mobxReact = require('mobx-react')
 
 const handle = app.getRequestHandler()
-mobxReact.useStaticRendering(true)
 
 const regex = pathToRegexp('/essays/:id', [])
 

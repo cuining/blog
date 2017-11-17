@@ -28,9 +28,13 @@ class Posts extends Component {
   }
 }
 
+const format = t => `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())} ${pad(t.getUTCHours())}:${pad(t.getUTCMinutes())}:${pad(t.getUTCSeconds())}`
+
+const pad = n => n < 10 ? `0${n}` : n
+
 const Post = ({ number, date, title }) => (
   <div className="post">
-    <span className="date">{date}</span>
+    <span className="date">{format(new Date(date))}</span>
     <Link href={`/essays/${number}`}>
       <a>{title}</a>
     </Link>
@@ -42,7 +46,7 @@ const Post = ({ number, date, title }) => (
 
       .date {
         display: inline-block;
-        width: 140px;
+        width: 240px;
         text-align: right;
         margin-right: 30px;
         color: #999;
