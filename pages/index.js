@@ -1,5 +1,5 @@
 import Page from '../layouts/main'
-import Link from 'next/prefetch'
+import Link from 'next/link'
 import Head from 'next/head'
 
 export default () => (
@@ -7,13 +7,17 @@ export default () => (
     <Head>
       <title>cui ning</title>
     </Head>
-
+    
     <div className="home">
       <div className="main">
         <h1>cui ning</h1>
         <nav>
-          <a target="_blank" href="https://github.com/cuining">Github</a>
-          <Link href="/essays"><a>Essays</a></Link>
+          <a target="_blank" href="https://github.com/cuining">
+            Github
+          </a>
+          <Link href="/essays">
+            <a>Essays</a>
+          </Link>
           <a href="mailto:cncc0824@gmail.com">Email</a>
         </nav>
       </div>

@@ -8,8 +8,11 @@
     "comma-number": "^2.0.0",
     "firebase": "^4.6.2",
     "isomorphic-fetch": "^2.2.1",
+    "marked": "^0.3.6",
     "next": "^4.1.4",
     "nprogress": "^0.2.0",
+    "path-to-regexp": "^2.1.0",
+    "prismjs": "^1.8.4",
     "react": "^16.1.1",
     "react-dom": "^16.1.1"
   },
@@ -17,7 +20,7 @@
     "alias": "avvp.pw"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node server",
     "build": "next build",
     "start": "NODE_ENV=production node server",
     "publish": "now"

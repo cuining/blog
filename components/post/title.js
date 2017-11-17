@@ -6,7 +6,7 @@ export default ({ children }) => (
         font: 18px Helvetica Neue, Helvetica,
           Arial, "Lucida Grande", sans-serif;
         font-weight: 500;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
       }
 
       a {

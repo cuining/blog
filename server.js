@@ -1,29 +1,29 @@
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
+const pathToRegexp = require('path-to-regexp')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
+const mobxReact = require('mobx-react')
+
 const handle = app.getRequestHandler()
+mobxReact.useStaticRendering(true)
+
+const regex = pathToRegexp('/essays/:id', [])
 
 app.prepare()
 .then(() => {
   createServer((req, res) => {
-    const { pathname } = parse(req.url)
+    const { pathname } = parse(req.url, true)
 
-    if (/^\/\d{4}\/.+\/$/.test(pathname)) {
-      // wordpress used to link to posts with a
-      // trailing slash, that would 404 in next
-      // so we redirect them to without
-      res.writeHead(301, {
-        Location: pathname.substr(0, pathname.length - 1)
-      })
-      res.end()
-      return
+    var values = regex.exec(pathname)
+    if (values) {
+      const query = { id: values[1] }
+      app.render(req, res, '/essays/detail', query)
+    } else {
+      handle(req, res)
     }
-
-
-    handle(req, res)
   })
   .listen(3000, (err) => {
     if (err) throw err
