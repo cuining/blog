@@ -10,6 +10,8 @@ export default () => (
   <div>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"/>
+      <link rel='icon' href='/static/favicon.ico' />
     </Head>
     { /* global styles */ }
     <style jsx global>{`
