@@ -16,7 +16,7 @@
     "dev": "node server",
     "build": "next build",
     "start": "NODE_ENV=production node server",
-    "deploy": "next build && pm2 startOrReload ecosystem.json"
+    "deploy": "next build && pm2 startOrReload ecosystem.json",
     "publish": "now"
   }
 }
