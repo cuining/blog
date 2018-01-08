@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "m-blog",
+      "script": "server.js",
+      "max_memory_restart": "500M",
+      "instances": 1,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

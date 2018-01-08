@@ -3,20 +3,20 @@
   "description": "cuining’s (blog)",
   "dependencies": {
     "comma-number": "^2.0.0",
-    "firebase": "^4.6.2",
     "isomorphic-fetch": "^2.2.1",
     "marked": "^0.3.6",
     "next": "^4.1.4",
     "next-routes": "^1.1.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.8.4",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "scripts": {
     "dev": "node server",
     "build": "next build",
     "start": "NODE_ENV=production node server",
+    "deploy": "next build && pm2 startOrReload ecosystem.json"
     "publish": "now"
   }
 }

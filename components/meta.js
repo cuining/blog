@@ -12,6 +12,14 @@ export default () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"/>
       <link rel='icon' href='/static/favicon.ico' />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112027377-1"></script>
+      <script dangerouslySetInnerHTML={{__html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-112027377-1');
+      `}}></script>
     </Head>
     { /* global styles */ }
     <style jsx global>{`

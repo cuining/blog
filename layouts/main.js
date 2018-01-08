@@ -2,24 +2,19 @@ import Meta from '../components/meta'
 import Link from 'next/link'
 
 export default ({ children }) => (
-  <div className="main">
+  <main>
     <div className="logo">
       <Link href="//cuining.now.sh/"><a>cuining.now.sh</a></Link>
     </div>
-
     { children }
-
-    { /* global styles and meta tags */ }
     <Meta />
-
-    { /* local styles */ }
     <style jsx>{`
-      .main {
+      main {
         padding: 25px 50px;
       }
 
       .logo {
-        padding-bottom: 50px;
+        margin-bottom: 50px;
       }
 
       a {
@@ -27,14 +22,14 @@ export default ({ children }) => (
       }
 
       @media (max-width: 500px) {
-        .main {
+        main {
           padding: 25px 15px;
         }
 
         .logo {
-          padding-bottom: 20px;
+          margin-bottom: 20px;
         }
       }
     `}</style>
-  </div>
+  </main>
 )

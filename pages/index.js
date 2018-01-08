@@ -7,7 +7,7 @@ export default () => (
     <Head>
       <title>cui ning</title>
     </Head>
-    
+
     <div className="home">
       <div className="main">
         <h1>cui ning</h1>
