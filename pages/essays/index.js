@@ -5,14 +5,14 @@ import Head from 'next/head'
 import 'isomorphic-fetch'
 
 class Posts extends Component {
-  static async getInitialProps () {
+  static async getInitialProps() {
     const res = await fetch('https://api.github.com/repos/cuining/blog/issues')
     const issues = await res.json()
 
     return { issues }
   }
 
-  render () {
+  render() {
     return (
       <Page>
         <Head>
@@ -28,9 +28,12 @@ class Posts extends Component {
   }
 }
 
-const format = t => `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())} ${pad(t.getUTCHours())}:${pad(t.getUTCMinutes())}:${pad(t.getUTCSeconds())}`
+const format = t =>
+  `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())} ${pad(t.getUTCHours())}:${pad(
+    t.getUTCMinutes()
+  )}:${pad(t.getUTCSeconds())}`
 
-const pad = n => n < 10 ? `0${n}` : n
+const pad = n => (n < 10 ? `0${n}` : n)
 
 const Post = ({ number, date, title }) => (
   <div className="post">

@@ -9,11 +9,9 @@ const handler = routes.getRequestHandler(app)
 
 routes.add('/essays/:id', '/essays/detail')
 
-app.prepare()
-.then(() => {
-  createServer(handler)
-  .listen(3000, (err) => {
+app.prepare().then(() => {
+  createServer(handler).listen(8080, err => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log('> Ready on http://localhost:8080')
   })
 })

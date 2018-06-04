@@ -4,9 +4,11 @@ import Link from 'next/link'
 export default ({ children }) => (
   <main>
     <div className="logo">
-      <Link href="//cuining.now.sh/"><a>cuining.now.sh</a></Link>
+      <Link href="//linnk.app">
+        <a>linnk.app</a>
+      </Link>
     </div>
-    { children }
+    {children}
     <Meta />
     <style jsx>{`
       main {

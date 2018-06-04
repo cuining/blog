@@ -7,7 +7,7 @@ import 'isomorphic-fetch'
 import marked from 'marked'
 
 class Detail extends Component {
-  static async getInitialProps ({ query }) {
+  static async getInitialProps({ query }) {
     let issue
     if (query.id) {
       const res = await fetch(`https://api.github.com/repos/cuining/blog/issues/${query.id}`)
@@ -21,7 +21,7 @@ class Detail extends Component {
     return { issue }
   }
 
-  render () {
+  render() {
     const { issue } = this.props
 
     if (issue) {
@@ -32,10 +32,7 @@ class Detail extends Component {
             <title>{issue.title}</title>
           </Head>
           <Title>{issue.title}</Title>
-          <div
-            className="markdown-body"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
         </Post>
       )
     }

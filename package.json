@@ -5,7 +5,7 @@
     "comma-number": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
     "marked": "^0.3.6",
-    "next": "^4.1.4",
+    "next": "^6.0.3",
     "next-routes": "^1.1.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.8.4",
@@ -16,7 +16,6 @@
     "dev": "node server",
     "build": "next build",
     "start": "NODE_ENV=production node server",
-    "deploy": "next build && pm2 startOrReload ecosystem.json",
-    "publish": "now"
+    "deploy": "gcloud app deploy"
   }
 }
