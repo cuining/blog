@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import Post from '../../layouts/post'
 import Title from '../../components/post/title'
 import 'isomorphic-fetch'
 import marked from 'marked'
 
-class Detail extends Component {
+class Detail extends React.Component {
   static async getInitialProps({ query }) {
     let issue
     if (query.id) {

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Page from '../../layouts/main'
 import Link from 'next/link'
 import Head from 'next/head'
 import 'isomorphic-fetch'
 
-class Posts extends Component {
+class Posts extends React.Component {
   static async getInitialProps() {
     const res = await fetch('https://api.github.com/repos/cuining/blog/issues')
     const issues = await res.json()
@@ -28,10 +28,7 @@ class Posts extends Component {
   }
 }
 
-const format = t =>
-  `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())} ${pad(t.getUTCHours())}:${pad(
-    t.getUTCMinutes()
-  )}:${pad(t.getUTCSeconds())}`
+const format = t => `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())}`
 
 const pad = n => (n < 10 ? `0${n}` : n)
 
