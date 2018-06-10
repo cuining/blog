@@ -1,40 +1,43 @@
-import React from 'react'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 import Page from '../../layouts/main'
+import ErrorMessage from '../../components/error-message'
 import Link from 'next/link'
 import Head from 'next/head'
-import 'isomorphic-fetch'
 
-class Posts extends React.Component {
-  static async getInitialProps() {
-    const res = await fetch('https://api.github.com/repos/cuining/blog/issues')
-    const issues = await res.json()
+const Posts = ({ data: { error, loading, repository } }) => {
+  if (error) return <ErrorMessage message="Error loading posts." />
 
-    return { issues }
-  }
-
-  render() {
-    return (
-      <Page>
-        <Head>
-          <title>Essays</title>
-        </Head>
-        <div className="posts">
-          {this.props.issues.map(({ id, number, updated_at, title }) => (
-            <Post number={number} key={id} date={updated_at} title={title} />
-          ))}
-        </div>
-      </Page>
-    )
-  }
+  return (
+    <Page>
+      <Head>
+        <title>Essays</title>
+      </Head>
+      <div className="posts">
+        {loading
+          ? 'Loading...'
+          : repository &&
+            repository.issues &&
+            repository.issues.nodes &&
+            repository.issues.nodes.map(({ number, createdAt, title }) => (
+              <Post number={number} key={number} date={createdAt} title={title} />
+            ))}
+      </div>
+      <style jsx>{`
+        .posts {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      `}</style>
+    </Page>
+  )
 }
 
-const format = t => `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDay())}`
-
-const pad = n => (n < 10 ? `0${n}` : n)
+const format = t => t.substr(0, 10)
 
 const Post = ({ number, date, title }) => (
   <div className="post">
-    <span className="date">{format(new Date(date))}</span>
+    <span className="date">{format(date)}</span>
     <Link href={`/essays/detail?id=${number}`} as={`/essays/${number}`}>
       <a>{title}</a>
     </Link>
@@ -74,4 +77,18 @@ const Post = ({ number, date, title }) => (
   </div>
 )
 
-export default Posts
+const allIssues = gql`
+  query {
+    repository(owner: "cuining", name: "blog") {
+      issues(last: 30, states: OPEN) {
+        nodes {
+          title
+          number
+          createdAt
+        }
+      }
+    }
+  }
+`
+
+export default graphql(allIssues)(Posts)

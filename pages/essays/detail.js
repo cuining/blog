@@ -1,43 +1,54 @@
-import React from 'react'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
+import { withRouter } from 'next/router'
+import ErrorMessage from '../../components/error-message'
 import Head from 'next/head'
 import Post from '../../layouts/post'
 import Title from '../../components/post/title'
-import 'isomorphic-fetch'
 import marked from 'marked'
 
-class Detail extends React.Component {
-  static async getInitialProps({ query }) {
-    let issue
-    if (query.id) {
-      const res = await fetch(`https://api.github.com/repos/cuining/blog/issues/${query.id}`)
+const Detail = ({ data: { error, repository } }) => {
+  if (error) return <ErrorMessage message="not found ~" />
 
-      issue = await res.json()
-      if (!issue.title) {
-        issue = null
-      }
-    }
-
-    return { issue }
+  if (repository && repository.issue) {
+    const html = marked(repository.issue.body)
+    return (
+      <Post>
+        <Head>
+          <title>{issue.title}</title>
+        </Head>
+        <Title>{issue.title}</Title>
+        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
+      </Post>
+    )
   }
 
-  render() {
-    const { issue } = this.props
-
-    if (issue) {
-      const html = marked(issue.body)
-      return (
-        <Post>
-          <Head>
-            <title>{issue.title}</title>
-          </Head>
-          <Title>{issue.title}</Title>
-          <div className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
-        </Post>
-      )
-    }
-
-    return <div>not found ~</div>
-  }
+  return 'Loading...'
 }
 
-export default Detail
+const issue = gql`
+  query issue($number: Int!) {
+    repository(owner: "cuining", name: "blog") {
+      issue(number: $number) {
+        body
+        comments(last: 3) {
+          edges {
+            node {
+              body
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default withRouter(
+  graphql(issue, {
+    options: ({ router: { query } }) => ({
+      variables: {
+        number: parseInt(query.id, 10)
+      }
+    })
+  })(Detail)
+)

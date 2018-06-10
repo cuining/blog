@@ -10,18 +10,25 @@ export default () => (
   <div>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"/>
-      <link rel='icon' href='/static/favicon.ico' />
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112027377-1"></script>
-      <script dangerouslySetInnerHTML={{__html: `
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css"
+      />
+      <link rel="icon" href="/static/favicon.ico" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112027377-1" />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'UA-112027377-1');
-      `}}></script>
+      `
+        }}
+      />
     </Head>
-    { /* global styles */ }
+    {/* global styles */}
     <style jsx global>{`
       * {
         margin: 0;
@@ -29,12 +36,13 @@ export default () => (
       }
 
       body {
-        font: 13px Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        font: 13px Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+          Courier New, monospace, serif;
       }
 
       a {
         color: #20a0ff;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
 
       a:hover {
@@ -65,7 +73,7 @@ export default () => (
         width: 100px;
         height: 100%;
         box-shadow: 0 0 10px #20a0ff, 0 0 5px #20a0ff;
-        opacity: 1.0;
+        opacity: 1;
         transform: rotate(3deg) translate(0px, -4px);
       }
     `}</style>
