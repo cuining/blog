@@ -45,7 +45,7 @@ class ErrorMessage extends React.Component {
           .error .error-emoji {
             padding-top: 96px;
             color: rgba(0, 0, 0, 0.4);
-            font-size: 150px;
+            font-size: 120px;
           }
 
           .error .error-text {
