@@ -2,9 +2,7 @@ import Page from './main'
 
 export default ({ children }) => (
   <Page>
-    <article>
-      { children }
-    </article>
+    <article>{children}</article>
 
     <style jsx>{`
       article {
